@@ -1,0 +1,16 @@
+[
+  {
+    "card1": {
+      "cardName": "Card Name",
+      "cardDescription": "Card Description",
+      "cardFiles": ["heheXd", "Random file", "testing"]
+    },
+    "card2": {
+      "cardName": "Card Name2",
+      "cardDescription": "Card Description2",
+      "cardFiles": ["file1", "file2", "file3"]
+    }
+  }
+]
+
+
