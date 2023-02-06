@@ -1,0 +1,19 @@
+/* add a drop shadow to my rows and a divider to my rows */
+
+.cardRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: white;
+  box-shadow: 0px 4px 25px rgba(196, 203, 216, 0.25);
+}
+
+.textRow {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0.1px;
+  color: #000000;
+  padding-bottom: 8px;
+}

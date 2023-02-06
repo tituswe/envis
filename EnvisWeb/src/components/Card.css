@@ -1,0 +1,57 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  margin-top: 53px;
+  width: 302px;
+  height: 200px;
+  border: 1px solid;
+  border-color: rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+}
+
+.directoryRow {
+  display: flex;
+  flex-direction: row;
+}
+
+.icon {
+  position: relative;
+  margin-left: 24px;
+  margin-top: 16px;
+  margin-right: 9px;
+}
+
+.directoryName {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+  color: #696974;
+  margin: 0px;
+  margin-top: 20px;
+}
+
+.info {
+  padding-left: 24px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+}
+
+.lorem {
+  margin: 0;
+  margin-right: 45px;
+  padding-left: 24px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.1px;
+
+  color: #696974;
+}
+
+.cardRows {
+  margin-top: 45px;
+}

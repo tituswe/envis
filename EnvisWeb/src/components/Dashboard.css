@@ -1,0 +1,11 @@
+.dashboardText {
+  padding-left: 290px;
+  padding-top: 30px;
+}
+
+.dashboard {
+  margin: 0 190px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
