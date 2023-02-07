@@ -1,15 +1,34 @@
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import LogoutIcon from '@mui/icons-material/Logout';
 import { Box, Typography, useTheme } from '@mui/material';
+import { signOut } from 'firebase/auth';
 import React, { useState } from 'react';
 import { Menu, MenuItem, Sidebar, useProSidebar } from 'react-pro-sidebar';
 import { Link } from 'react-router-dom';
+import Cookies from 'universal-cookie';
+import { auth } from '../../firebase/firebase-config';
 import { tokens } from '../../theme';
 
-const Sidemenu = () => {
+const cookies = new Cookies();
+
+const Sidemenu = (props) => {
+	const { setIsAuth } = props;
 	const theme = useTheme();
 	const colors = tokens(theme.palette.mode);
 	const [selected, setSelected] = useState('Dashboard');
 	const { collapsed } = useProSidebar();
+
+	const signOutUser = async () => {
+		console.log('sup2');
+		try {
+			console.log('signing out');
+			const result = await signOut(auth);
+			cookies.remove('auth-token', { path: '/' });
+			setIsAuth(false);
+		} catch (err) {
+			console.log(err);
+		}
+	};
 
 	const Item = ({ title, to, icon, selected, setSelected }) => {
 		return (
@@ -18,7 +37,7 @@ const Sidemenu = () => {
 				style={{
 					color: colors.grey[100],
 				}}
-				onClick={() => setSelected(title)}
+				onClick={title === 'Logout' ? setSelected : () => setSelected(title)}
 				icon={icon}
 			>
 				<Typography>{title}</Typography>
@@ -85,6 +104,15 @@ const Sidemenu = () => {
 							icon={<HomeOutlinedIcon />}
 							selected={selected}
 							setSelected={setSelected}
+						/>
+					</Box>
+					<Box>
+						<Item
+							title="Logout"
+							to="/"
+							icon={<LogoutIcon />}
+							selected={selected}
+							setSelected={signOutUser}
 						/>
 					</Box>
 				</Box>
