@@ -6,7 +6,7 @@ function AddCard() {
   return (
     <div className="addCard">
       <div className="textCard">Create a New Directory</div>
-      <div className="addButton">
+      <div className="addButton addmargin">
         <AiOutlinePlus size={24} color={"#92929D"} className="iconPlus" />
       </div>
     </div>

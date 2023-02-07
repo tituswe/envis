@@ -1,6 +1,7 @@
 import "./Card.css";
 import { HiFolder } from "react-icons/hi";
 import CardRow from "./CardRow";
+import { AiOutlinePlus } from "react-icons/ai";
 
 function Card({ cardName, cardDescription, cardFiles }) {
   return (
@@ -16,6 +17,9 @@ function Card({ cardName, cardDescription, cardFiles }) {
         {cardFiles.map((file) => (
           <CardRow key={file} text={file} />
         ))}
+      </div>
+      <div className="addButton addMargin">
+        <AiOutlinePlus size={24} color={"#92929D"} className="iconPlus" />
       </div>
     </div>
   );

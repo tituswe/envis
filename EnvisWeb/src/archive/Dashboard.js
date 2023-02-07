@@ -1,4 +1,5 @@
 import React from "react";
+import AddCard from "./AddCard";
 import Card from "./Card";
 import "./Dashboard.css";
 
@@ -32,6 +33,7 @@ const Dashboard = () => {
             />
           );
         })}
+        <AddCard/>
       </div>
     </div>
   );

@@ -1,0 +1,35 @@
+export const dummyDirectories = [
+    {
+        id: 1,
+        name: "Directory1",
+        description: "This is a directory",
+    },
+    {
+        id: 2,
+        name: "Directory2",
+        description: "This is a directory",
+    },
+    {
+        id: 3,
+        name: "Directory3",
+        description: "This is a directory",
+    },
+];
+
+export const dummyFiles = [
+    {
+        id: 1,
+        name: "File1",
+        description: "This is a file",
+    },
+    {
+        id: 2,
+        name: "File2",
+        description: "This is a file",
+    },
+    {
+        id: 3,
+        name: "File3",
+        description: "This is a file",
+    },
+]; 
