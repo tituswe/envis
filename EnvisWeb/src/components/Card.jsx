@@ -4,6 +4,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import FolderIcon from "@mui/icons-material/Folder";
 import FolderOutlinedIcon from "@mui/icons-material/FolderOutlined";
 import { TreeItem, TreeView } from "@mui/lab";
+
 import {
   Box,
   Button,
@@ -17,6 +18,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { tokens } from "../theme";
 import AddIcon from "@mui/icons-material/Add";
+import { getStorage, ref, uploadBytes } from "firebase/storage";
 
 const Card = ({ description }) => {
   const theme = useTheme();
@@ -61,6 +63,16 @@ const Card = ({ description }) => {
   const [newDirectoryName, setNewDirectoryName] = useState("");
   const [newFileName, setNewFileName] = useState("");
 
+  const storage = getStorage();
+
+  const uploadTextFile = (content, fileName) => {
+    const textFile = new Blob([content], { type: "text/plain" });
+    const storageRef = ref(storage, fileName);
+    uploadBytes(storageRef, textFile).then((snapshot) => {
+      console.log("Uploaded a blob or file!");
+    });
+  };
+
   const addDirectory = () => {
     const newDirectory = {
       id: Math.random(),
@@ -68,6 +80,7 @@ const Card = ({ description }) => {
       children: [],
     };
     setData([...data, newDirectory]);
+    uploadTextFile("", newDirectoryName + "/sentinel.txt");
     setNewDirectoryName("");
   };
 
@@ -85,6 +98,7 @@ const Card = ({ description }) => {
         return item;
       })
     );
+    uploadTextFile("Hello World", newFileName);
     setNewFileName("");
   };
 
