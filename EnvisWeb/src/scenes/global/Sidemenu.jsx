@@ -4,7 +4,6 @@ import { Box, Typography, useTheme } from '@mui/material';
 import { signOut } from 'firebase/auth';
 import React, { useState } from 'react';
 import { Menu, MenuItem, Sidebar, useProSidebar } from 'react-pro-sidebar';
-import { Link } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import { auth } from '../../firebase/firebase-config';
 import { tokens } from '../../theme';
@@ -41,7 +40,6 @@ const Sidemenu = (props) => {
 				icon={icon}
 			>
 				<Typography>{title}</Typography>
-				<Link to={to} />
 			</MenuItem>
 		);
 	};
