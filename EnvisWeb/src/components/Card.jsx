@@ -62,6 +62,7 @@ const Card = ({ description }) => {
   const [data, setData] = useState(treeData);
   const [newDirectoryName, setNewDirectoryName] = useState("");
   const [newFileName, setNewFileName] = useState("");
+  const [newFileContent, setNewFileContent] = useState("");
 
   const storage = getStorage();
 
@@ -98,8 +99,10 @@ const Card = ({ description }) => {
         return item;
       })
     );
-    uploadTextFile("Hello World", newFileName);
+    uploadTextFile(newFileContent, newFileName);
     setNewFileName("");
+    setNewFileContent("");
+    handleClose();
   };
 
   return (
@@ -143,6 +146,15 @@ const Card = ({ description }) => {
                   sx={{ mt: 2 }}
                   value={newFileName}
                   onChange={(e) => setNewFileName(e.target.value)}
+                />
+                <TextField
+                  fullWidth
+                  id="modal-modal-description"
+                  label="Input File Content"
+                  variant="standard"
+                  sx={{ mt: 2 }}
+                  value={newFileContent}
+                  onChange={(e) => setNewFileContent(e.target.value)}
                 />
                 <Button
                   variant="contained"
