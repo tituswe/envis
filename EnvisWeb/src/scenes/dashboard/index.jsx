@@ -9,6 +9,14 @@ import {
 	useTheme,
 } from '@mui/material';
 import {
+	collection,
+	doc,
+	onSnapshot,
+	query,
+	setDoc,
+	where,
+} from 'firebase/firestore';
+import {
 	getDownloadURL,
 	getStorage,
 	listAll,
@@ -18,6 +26,7 @@ import {
 import React, { useEffect, useState } from 'react';
 import AddCard from '../../components/AddCard';
 import BasicCard from '../../components/BasicCard';
+import { auth, db, provider, userId } from '../../firebase/firebase-config';
 
 const style = {
 	position: 'absolute',
@@ -37,7 +46,6 @@ const Dashboard = () => {
 	const handleClose = () => setOpen(false);
 
 	const [data, setData] = useState([]);
-	const [newDirectoryName, setNewDirectoryName] = useState('');
 	const [newFileName, setNewFileName] = useState('');
 	const [newFileContent, setNewFileContent] = useState('');
 
@@ -45,34 +53,37 @@ const Dashboard = () => {
 	const listRef = ref(storage);
 
 	const uploadTextFile = (content, fileName) => {
-		const textFile = new Blob([content], { type: 'text/plain' });
-		const storageRef = ref(storage, fileName);
-		uploadBytes(storageRef, textFile).then((snapshot) => {
-			console.log('Uploaded a blob or file!');
-		});
+		// const textFile = new Blob([content], { type: 'text/plain' });
+		// const storageRef = ref(storage, fileName);
+		// uploadBytes(storageRef, textFile).then((snapshot) => {
+		// 	console.log('Uploaded a blob or file!');
+		// });
+
+		const userRef = doc(db, userId, fileName);
+		setDoc(userRef, { content: content });
 	};
 
 	const addFile = () => {
-		const newFile = {
-			id: Math.random(),
-			name: newFileName,
-		};
-
 		uploadTextFile(newFileContent, newFileName);
 		setNewFileName('');
 		setNewFileContent('');
 		handleClose();
 	};
 
+	const q = query(collection(db, userId), where('content', '!=', ''));
 	useEffect(() => {
-		listAll(listRef).then((response) => {
-			response.items.forEach((item) => {
-				getDownloadURL(item).then((url) => {
-					const newItem = { header: item.name, description: url };
-					setData((data) => [...data, newItem]);
-				});
+		const unsubscribe = onSnapshot(q, (querySnapshot) => {
+			const newData = [];
+			querySnapshot.forEach((doc) => {
+				const item = { header: doc.id, description: doc.data().content };
+				newData.push(item);
 			});
+			console.log(newData);
+			console.log('Files in data: ', newData.join(', '));
+			setData(newData);
 		});
+
+		return () => unsubscribe();
 	}, []);
 
 	return (
