@@ -34,7 +34,7 @@ const Sidemenu = (props) => {
 			<MenuItem
 				active={selected === title}
 				style={{
-					color: colors.grey[100],
+					color: 'white',
 				}}
 				onClick={title === 'Logout' ? setSelected : () => setSelected(title)}
 				icon={icon}
@@ -52,21 +52,21 @@ const Sidemenu = (props) => {
 						alt="profile-user"
 						width="100px"
 						height="100px"
-						src={`../../logo192.png`}
+						src={`../../assets/user.png`}
 						style={{ cursor: 'pointer', borderRadius: '50%' }}
 					/>
 				</Box>
 				<Box textAlign="center">
 					<Typography
 						variant="h2"
-						color={colors.grey[100]}
+						color="white"
 						fontWeight="bold"
-						sx={{ m: '10px 0 0 0' }}
+						sx={{ m: '12px 0 5px 0' }}
 					>
-						Titus Lowe
+						Mark Zuck...
 					</Typography>
-					<Typography variant="h5" color={colors.greenAccent[500]}>
-						Senior Software Developer
+					<Typography variant="h5" color="white">
+						Chairman ENVIS Foundation
 					</Typography>
 				</Box>
 			</Box>
@@ -75,7 +75,9 @@ const Sidemenu = (props) => {
 
 	return (
 		<Sidebar
-			backgroundColor={colors.primary[400]}
+			backgroundColor={colors.primary[300]}
+			sx={{ background: 'linear-gradient(145deg, #0f172c, #121c34)' }}
+			color={colors.primary[300]}
 			transitionDuration={800}
 			collapsedWidth="100px"
 		>
@@ -88,7 +90,7 @@ const Sidemenu = (props) => {
 						ml="10px"
 						mb="10px"
 					>
-						<Typography variant="h3" color={colors.grey[100]}>
+						<Typography variant="h3" color="white">
 							ENVIS
 						</Typography>
 					</Box>

@@ -20,18 +20,24 @@ const Topbar = () => {
 	return (
 		<Box display="flex" justifyContent="space-between" p={2}>
 			<IconButton>
-				<MenuOutlinedIcon onClick={() => collapseSidebar()} />
+				<MenuOutlinedIcon
+					onClick={() => collapseSidebar()}
+					sx={{ color: colors.primary[100] }}
+				/>
 			</IconButton>
 			{/* SEARCH BAR */}
 			<Box
 				display="flex"
-				backgroundColor={colors.primary[400]}
-				borderRadius="3px"
-				width="75%"
+				sx={{ background: 'linear-gradient(145deg, #f0f0f0, #cacaca)' }}
+				borderRadius="25px"
+				width="88%"
 			>
-				<InputBase sx={{ ml: 2, flex: 1 }} placeholder="Search" />
+				<InputBase
+					sx={{ ml: 2, flex: 1, color: colors.primary[100] }}
+					placeholder="Search"
+				/>
 				<IconButton type="button" sx={{ p: 1 }}>
-					<SearchIcon />
+					<SearchIcon mr="2px" sx={{ color: colors.primary[100] }} />
 				</IconButton>
 			</Box>
 
@@ -39,19 +45,19 @@ const Topbar = () => {
 			<Box display="flex">
 				<IconButton onClick={colorMode.toggleColorMode}>
 					{theme.palette.mode === 'dark' ? (
-						<DarkModeOutlinedIcon />
+						<DarkModeOutlinedIcon sx={{ color: colors.primary[100] }} />
 					) : (
-						<LightModeOutlinedIcon />
+						<LightModeOutlinedIcon sx={{ color: colors.primary[100] }} />
 					)}
 				</IconButton>
 				<IconButton>
-					<NotificationsOutlinedIcon />
+					<NotificationsOutlinedIcon sx={{ color: colors.primary[100] }} />
 				</IconButton>
 				<IconButton>
-					<SettingsOutlinedIcon />
+					<SettingsOutlinedIcon sx={{ color: colors.primary[100] }} />
 				</IconButton>
 				<IconButton>
-					<PersonOutlinedIcon />
+					<PersonOutlinedIcon sx={{ color: colors.primary[100] }} />
 				</IconButton>
 			</Box>
 		</Box>
