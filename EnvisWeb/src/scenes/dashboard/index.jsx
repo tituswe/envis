@@ -18,13 +18,6 @@ import {
   setDoc,
   where,
 } from "firebase/firestore";
-import {
-  getDownloadURL,
-  getStorage,
-  listAll,
-  ref,
-  uploadBytes,
-} from "firebase/storage";
 import React, { useEffect, useState } from "react";
 import AddCard from "../../components/AddCard";
 import BasicCard from "../../components/BasicCard";
@@ -58,12 +51,9 @@ const Dashboard = () => {
   const [newFileName, setNewFileName] = useState("");
   const [newFileContent, setNewFileContent] = useState("");
 
-  const storage = getStorage();
-  const listRef = ref(storage);
-
   const uploadTextFile = (content, fileName) => {
     const userRef = doc(db, userId, fileName);
-    setDoc(userRef, { content: content });
+    setDoc(userRef, { message: content });
   };
 
   const addFile = () => {
@@ -78,12 +68,13 @@ const Dashboard = () => {
     await deleteDoc(doc(db, userId, fileName));
   };
 
-  const q = query(collection(db, userId), where("content", "!=", ""));
+  const q = query(collection(db, userId), where("message", "!=", ""));
   useEffect(() => {
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const newData = [];
       querySnapshot.forEach((doc) => {
-        const item = { header: doc.id, description: doc.data().content };
+        console.log(doc);
+        const item = { header: doc.id, description: doc.data().message };
         newData.push(item);
       });
       console.log(newData);
