@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "swiftnfc",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/1998code/SwiftNFC",
+      "state" : {
+        "branch" : "main",
+        "revision" : "a6877959c87be788f334c2f68df5ab257c09d8af"
+      }
+    }
+  ],
+  "version" : 2
+}
