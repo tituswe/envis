@@ -8,7 +8,6 @@ struct EnvisMobApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-//            TextToSpeech()
         }
     }
 }
