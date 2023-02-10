@@ -12,6 +12,9 @@
 		582C7F8429960C9700B82495 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 582C7F8329960C9700B82495 /* Assets.xcassets */; };
 		582C7F8729960C9700B82495 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 582C7F8629960C9700B82495 /* Preview Assets.xcassets */; };
 		582C7F8F29960CDF00B82495 /* SwiftNFC in Frameworks */ = {isa = PBXBuildFile; productRef = 582C7F8E29960CDF00B82495 /* SwiftNFC */; };
+		B0B4C2882996483000E812E5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B0B4C2872996483000E812E5 /* GoogleService-Info.plist */; };
+		B0B4C28B2996495700E812E5 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = B0B4C28A2996495700E812E5 /* FirebaseFirestore */; };
+		B0B4C28D29964A2B00E812E5 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B4C28C29964A2B00E812E5 /* Firebase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +24,8 @@
 		582C7F8329960C9700B82495 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		582C7F8629960C9700B82495 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		582C7F9029960CED00B82495 /* EnvisMob.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EnvisMob.entitlements; sourceTree = "<group>"; };
+		B0B4C2872996483000E812E5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B0B4C28C29964A2B00E812E5 /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +34,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				582C7F8F29960CDF00B82495 /* SwiftNFC in Frameworks */,
+				B0B4C28B2996495700E812E5 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,10 +60,12 @@
 		582C7F7E29960C9500B82495 /* EnvisMob */ = {
 			isa = PBXGroup;
 			children = (
+				582C7F8329960C9700B82495 /* Assets.xcassets */,
+				582C7F8129960C9500B82495 /* ContentView.swift */,
 				582C7F9029960CED00B82495 /* EnvisMob.entitlements */,
 				582C7F7F29960C9500B82495 /* EnvisMobApp.swift */,
-				582C7F8129960C9500B82495 /* ContentView.swift */,
-				582C7F8329960C9700B82495 /* Assets.xcassets */,
+				B0B4C28C29964A2B00E812E5 /* Firebase.swift */,
+				B0B4C2872996483000E812E5 /* GoogleService-Info.plist */,
 				582C7F8529960C9700B82495 /* Preview Content */,
 			);
 			path = EnvisMob;
@@ -89,6 +97,7 @@
 			name = EnvisMob;
 			packageProductDependencies = (
 				582C7F8E29960CDF00B82495 /* SwiftNFC */,
+				B0B4C28A2996495700E812E5 /* FirebaseFirestore */,
 			);
 			productName = EnvisMob;
 			productReference = 582C7F7C29960C9500B82495 /* EnvisMob.app */;
@@ -120,6 +129,7 @@
 			mainGroup = 582C7F7329960C9500B82495;
 			packageReferences = (
 				582C7F8D29960CDF00B82495 /* XCRemoteSwiftPackageReference "SwiftNFC" */,
+				B0B4C2892996495700E812E5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 582C7F7D29960C9500B82495 /* Products */;
 			projectDirPath = "";
@@ -137,6 +147,7 @@
 			files = (
 				582C7F8729960C9700B82495 /* Preview Assets.xcassets in Resources */,
 				582C7F8429960C9700B82495 /* Assets.xcassets in Resources */,
+				B0B4C2882996483000E812E5 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,6 +160,7 @@
 			files = (
 				582C7F8229960C9500B82495 /* ContentView.swift in Sources */,
 				582C7F8029960C9500B82495 /* EnvisMobApp.swift in Sources */,
+				B0B4C28D29964A2B00E812E5 /* Firebase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,6 +377,14 @@
 				kind = branch;
 			};
 		};
+		B0B4C2892996495700E812E5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -372,6 +392,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 582C7F8D29960CDF00B82495 /* XCRemoteSwiftPackageReference "SwiftNFC" */;
 			productName = SwiftNFC;
+		};
+		B0B4C28A2996495700E812E5 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0B4C2892996495700E812E5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
