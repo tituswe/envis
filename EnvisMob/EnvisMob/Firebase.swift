@@ -1,10 +1,3 @@
-//
-//  Firestore.swift
-//  EnvisMob
-//
-//  Created by Joshua Tan on 10/2/23.
-//
-
 import SwiftUI
 import FirebaseCore
 

@@ -1,21 +1,10 @@
-//
-//  ContentView.swift
-//  EnvisMob
-//
-//  Created by Titus Lowe on 10/2/23.
-//
-
 import SwiftUI
 import SwiftNFC
 import AVFoundation
 import AVKit
+import FirebaseCore
+import FirebaseFirestore
 
-//struct ScaleButtonUp: ButtonStyle {
-//    func makeBody(configuration: Configuration) -> some View {
-//        configuration.label
-//            .scaleEffect(configuration.isPressed ? 1.05 : 1)
-//    }
-//}
 
 struct ContentView: View {
     // MARK: - You can use either Reader / Writer or both in your application.
@@ -25,8 +14,6 @@ struct ContentView: View {
     
     @State private var isTapped = false
     
-    @State private var message = "Long Press to Scan a puck."
-    
     let synthesizer = AVSpeechSynthesizer()
     
     var body: some View {
@@ -35,18 +22,26 @@ struct ContentView: View {
 
             ZStack {
                 // MARK: Background
-                LinearGradient(gradient: Gradient(colors: [.purple, .indigo]), startPoint: .top, endPoint: .bottom)
+                
+                TextEditor(text: $NFCR.msg)
+                    .foregroundColor(.clear)
+                
+                LinearGradient(
+                    gradient: Gradient(
+                        colors: [
+                            Color(hex: "f4a5ae") ?? .indigo,
+                            Color(hex: "531cb3") ?? .purple
+                        ]), startPoint: .topLeading, endPoint: .bottomTrailing)
                 
                 Button( action: {}) {
                     ZStack {
                         Circle()
                             .frame(width: 700, height: 700)
-                            .foregroundColor(.white.opacity(0.3))
+                            .foregroundColor(.white.opacity(0.15))
                             .scaleEffect(isTapped ? 0.7 : 1)
-                        
                         Circle()
                             .frame(width: 500, height: 500)
-                            .foregroundColor(.white.opacity(0.2))
+                            .foregroundColor(.white.opacity(0.05))
                             .scaleEffect(isTapped ? 0.9 : 1)
                         
                         Circle()
@@ -67,8 +62,11 @@ struct ContentView: View {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                                 isTapped = false
                             }
-                            
-                            textToSpeech()
+                            if (NFCR.msg == "Scan to read or Edit here to write...") {
+                                welcomeSpeech()
+                            } else {
+                                textToSpeech()
+                            }
                         }
                     }
                     .onLongPressGesture(minimumDuration: 0.2) {
@@ -95,10 +93,27 @@ struct ContentView: View {
     
     func read() {
         NFCR.read()
+    }
+    
+    func fetchData(completion: @escaping(String) -> Void) {
         if (NFCR.msg != "Scan to read or Edit here to write...") {
             let path = NFCR.msg
-            // TODO: let result = fetchData(path : String)
-            // TODO: message = result
+            
+            let pathArr = path.split(separator: "/")
+            let enterprise = String.init(describing: pathArr[1])
+            let puckInstance = String.init(describing: pathArr[2])
+            
+            let db = Firestore.firestore()
+            let docRef = db.collection(enterprise).document(puckInstance)
+            
+            docRef.getDocument { (document, error) in
+                if let document = document, document.exists {
+                    let dataDesciption = document.data()!["message"].map(String.init(describing:)) ?? "nil"
+                    completion(dataDesciption)
+                } else {
+                    print("Document does not exist")
+                }
+            }
         }
     }
     
@@ -113,7 +128,23 @@ struct ContentView: View {
     }
     
     func textToSpeech() {
-        let utterance = AVSpeechUtterance(string: message)
+        fetchData { dataDescription in
+            let utterance = AVSpeechUtterance(string: dataDescription)
+            utterance.rate = 0.5
+            utterance.pitchMultiplier = 0.8
+            utterance.postUtteranceDelay = 0.2
+            utterance.volume = 0.8
+            
+            let voice = AVSpeechSynthesisVoice()
+            
+            utterance.voice = voice
+            
+            synthesizer.speak(utterance)
+        }
+    }
+    
+    func welcomeSpeech() {
+        let utterance = AVSpeechUtterance(string: "Welcome to Envis! Long press anywhere to scan a puck, then, tap anywhere once you're ready to hear your message.")
         utterance.rate = 0.5
         utterance.pitchMultiplier = 0.8
         utterance.postUtteranceDelay = 0.2
