@@ -15,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		582B443B299648540060A1A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		582C7F7C29960C9500B82495 /* EnvisMob.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EnvisMob.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		582C7F7F29960C9500B82495 /* EnvisMobApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvisMobApp.swift; sourceTree = "<group>"; };
 		582C7F8129960C9500B82495 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -54,6 +55,7 @@
 		582C7F7E29960C9500B82495 /* EnvisMob */ = {
 			isa = PBXGroup;
 			children = (
+				582B443B299648540060A1A7 /* Info.plist */,
 				582C7F9029960CED00B82495 /* EnvisMob.entitlements */,
 				582C7F7F29960C9500B82495 /* EnvisMobApp.swift */,
 				582C7F8129960C9500B82495 /* ContentView.swift */,
@@ -281,6 +283,7 @@
 				DEVELOPMENT_TEAM = QFTDF2CU83;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EnvisMob/Info.plist;
 				INFOPLIST_KEY_NFCReaderUsageDescription = "Use NFC to read and write data.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -313,6 +316,7 @@
 				DEVELOPMENT_TEAM = QFTDF2CU83;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EnvisMob/Info.plist;
 				INFOPLIST_KEY_NFCReaderUsageDescription = "Use NFC to read and write data.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
