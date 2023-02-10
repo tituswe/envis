@@ -75,9 +75,7 @@ const Sidemenu = (props) => {
 
 	return (
 		<Sidebar
-			backgroundColor={colors.primary[300]}
-			sx={{ background: 'linear-gradient(145deg, #0f172c, #121c34)' }}
-			color={colors.primary[300]}
+			backgroundColor="#310145"
 			transitionDuration={800}
 			collapsedWidth="100px"
 		>

@@ -16,7 +16,7 @@ const AddCard = ({ handleOpen }) => {
 		<Card
 			onClick={handleOpen}
 			sx={{
-				width: 350,
+				width: 300,
 				height: 250,
 				// backgroundColor: colors.primary[500],
 				background: 'linear-gradient(145deg, #ffffff, #e6e6e6)',

@@ -30,7 +30,7 @@ const Topbar = () => {
 				display="flex"
 				sx={{ background: 'linear-gradient(145deg, #f0f0f0, #cacaca)' }}
 				borderRadius="25px"
-				width="88%"
+				width="80%"
 			>
 				<InputBase
 					sx={{ ml: 2, flex: 1, color: colors.primary[100] }}
