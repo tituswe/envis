@@ -11,6 +11,9 @@
 # production
 /build
 
+# add firebase-config to gitignore
+/src/firebase
+
 # misc
 .DS_Store
 .env.local
