@@ -15,6 +15,7 @@
 		B0B4C2882996483000E812E5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B0B4C2872996483000E812E5 /* GoogleService-Info.plist */; };
 		B0B4C28B2996495700E812E5 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = B0B4C28A2996495700E812E5 /* FirebaseFirestore */; };
 		B0B4C28D29964A2B00E812E5 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B4C28C29964A2B00E812E5 /* Firebase.swift */; };
+		B0BBD8BB2996B00A0062BA26 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BBD8BA2996B00A0062BA26 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		582C7F9029960CED00B82495 /* EnvisMob.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EnvisMob.entitlements; sourceTree = "<group>"; };
 		B0B4C2872996483000E812E5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B0B4C28C29964A2B00E812E5 /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
+		B0BBD8BA2996B00A0062BA26 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				B0B4C28C29964A2B00E812E5 /* Firebase.swift */,
 				B0B4C2872996483000E812E5 /* GoogleService-Info.plist */,
 				582C7F8529960C9700B82495 /* Preview Content */,
+				B0BBD8BA2996B00A0062BA26 /* Extensions.swift */,
 			);
 			path = EnvisMob;
 			sourceTree = "<group>";
@@ -163,6 +166,7 @@
 				582C7F8229960C9500B82495 /* ContentView.swift in Sources */,
 				582C7F8029960C9500B82495 /* EnvisMobApp.swift in Sources */,
 				B0B4C28D29964A2B00E812E5 /* Firebase.swift in Sources */,
+				B0BBD8BB2996B00A0062BA26 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
